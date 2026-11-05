@@ -1,4 +1,4 @@
-# 🎙️ VoxGravity
+﻿# 🎙️ VoxGravity
 
 <div align="center">
 
@@ -94,6 +94,14 @@ O script cuidará de:
 4. Registrar o pacote no modo editável (`pip install -e .`)
 
 ---
+
+
+### 📢 Protocolo de Feedback Contínuo por Voz
+Para tarefas práticas ou demoradas (execução de scripts, pesquisas, edições de arquivos), o agente segue um ciclo de 3 etapas para manter o usuário informado sem silêncios:
+1. **Aviso Imediato de Início**: Confirmação em áudio e texto assim que a tarefa é recebida.
+2. **Atualização de Etapas**: Notificações curtas de progresso durante procedimentos mais longos.
+3. **Resumo de Conclusão**: Relatório final claro e reativação da escuta.
+Consulte [FEEDBACK_VOZ.md](FEEDBACK_VOZ.md) para detalhes.
 
 ## 🎯 Como Usar
 
