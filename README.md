@@ -97,24 +97,30 @@ O script cuidará de:
 
 ## 🎯 Como Usar
 
-### 1. Mini-Barra Flutuante (Recomendado)
+### 1. Ativação via Chat ("Ativar Copiloto")
+No chat com o agente (Antigravity), basta enviar o comando:
+> **`ativar copiloto`**
+
+Isso ativa automaticamente o monitoramento da ponte (`FileBridge`) em segundo plano, definindo a **fala com a voz da Cristina como padrão inicial** para todas as respostas.
+
+### 2. Mini-Barra Flutuante (Interface Visual)
 Dê dois cliques em:
 ```cmd
 iniciar_mini_barra.bat
 ```
 - A barra ficará fixada no topo da tela (*always-on-top*).
-- Pressione `Shift + '` em qualquer tela para ativar o microfone (beep agudo).
-- Fale sua pergunta e pressione `Shift + '` novamente (beep médio).
-- A pergunta é transcrita e enviada automaticamente via Bridge para o agente!
+- Pressione **`Shift + '`** em qualquer janela para começar a falar (beep agudo).
+- Fale à vontade e pressione **`Shift + '`** novamente para encerrar e enviar (beep médio).
+- A pergunta é transcrita e enviada automaticamente via Bridge para a Cristina, que responde em áudio!
 
-### 2. Modo Terminal (Daemon Headless)
+### 3. Modo Terminal (Daemon Headless)
 Dê dois cliques em:
 ```cmd
 iniciar_push_to_talk.bat
 ```
-Executa diretamente pelo terminal para máxima economia de recursos.
+Executa diretamente pelo terminal em modo silencioso/mínimo, ideal para deixar minimizado durante jogos ou trabalho focado.
 
-### 3. Síntese Direta via Linha de Comando
+### 4. Síntese Direta via Linha de Comando
 ```cmd
 .venv\Scripts\python.exe falar_edge.py "Olá! Como posso te ajudar agora?" cristina
 ```
