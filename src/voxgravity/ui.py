@@ -1,3 +1,4 @@
+import webbrowser
 import os
 import sys
 import time
@@ -38,6 +39,7 @@ class MiniBarraVoz:
         self._construir_interface()
         self._iniciar_atalho_global()
         self._iniciar_monitor_resposta()
+        self._iniciar_monitor_acao()
         
     def _construir_interface(self):
         # 1. Barra de Título (Arrastável)
@@ -274,6 +276,34 @@ class MiniBarraVoz:
             self.status_var.set("🚀 Enviado à Cristina! Ela já está processando...")
         else:
             self.status_var.set("Erro ao gravar no arquivo de bridge.")
+
+    def _iniciar_monitor_acao(self):
+        def monitor_acao_loop():
+            while True:
+                time.sleep(0.3)
+                try:
+                    acao = FileBridge.ler_acao(remover=True)
+                    if acao:
+                        self.root.after(0, lambda a=acao: self._executar_acao_local(a))
+                except Exception:
+                    pass
+        threading.Thread(target=monitor_acao_loop, daemon=True).start()
+
+    def _executar_acao_local(self, acao: dict):
+        tipo = acao.get("tipo", "").lower()
+        valor = acao.get("valor", "").strip()
+        if not valor:
+            return
+        
+        try:
+            if tipo in ["url", "browser", "site"]:
+                webbrowser.open(valor)
+                self.status_var.set(f"🌐 Aberto na tela: {valor[:45]}...")
+            elif tipo in ["cmd", "app", "open"]:
+                os.startfile(valor)
+                self.status_var.set(f"🚀 Iniciado: {valor[:45]}...")
+        except Exception as e:
+            self.status_var.set(f"⚠️ Erro ao executar ação: {e}")
 
     def fechar(self):
         self.recorder.fechar()

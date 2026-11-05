@@ -1,9 +1,10 @@
-import os
+﻿import os
 import sys
 import time
 from pathlib import Path
 from typing import Optional
-from voxgravity.config import BRIDGE_DIR, PERGUNTA_FILE, RESPOSTA_FILE
+import json
+from voxgravity.config import BRIDGE_DIR, PERGUNTA_FILE, RESPOSTA_FILE, ACAO_FILE
 
 class FileBridge:
     """Gerencia a comunicação assíncrona por arquivos entre o usuário e o Agente Antigravity."""
@@ -83,3 +84,29 @@ class FileBridge:
                     return conteudo
             time.sleep(intervalo)
         return None
+
+    @staticmethod
+    def executar_acao(tipo: str, valor: str) -> bool:
+        """Escreve uma ação para ser executada na sessão gráfica do usuário pela UI."""
+        try:
+            dados = {"tipo": tipo, "valor": valor, "timestamp": time.time()}
+            with open(ACAO_FILE, "w", encoding="utf-8") as f:
+                json.dump(dados, f, ensure_ascii=False)
+            return True
+        except Exception as e:
+            print(f"[Bridge] Erro ao enviar ação: {e}")
+            return False
+
+    @staticmethod
+    def ler_acao(remover: bool = True) -> Optional[dict]:
+        """Lê e consome uma ação pendente."""
+        if not ACAO_FILE.exists():
+            return None
+        try:
+            with open(ACAO_FILE, "r", encoding="utf-8") as f:
+                dados = json.load(f)
+            if remover:
+                ACAO_FILE.unlink(missing_ok=True)
+            return dados
+        except Exception:
+            return None

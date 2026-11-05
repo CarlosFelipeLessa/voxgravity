@@ -49,7 +49,8 @@ DEFAULT_CONFIG = {
     "bridge": {
         "folder": "bridge",
         "pergunta_file": "pergunta.txt",
-        "resposta_file": "resposta.txt"
+        "resposta_file": "resposta.txt",
+        "acao_file": "acao.json"
     }
 }
 
@@ -73,6 +74,7 @@ CONFIG = load_config()
 BRIDGE_DIR = ROOT_DIR / CONFIG.get("bridge", {}).get("folder", "bridge")
 PERGUNTA_FILE = BRIDGE_DIR / CONFIG.get("bridge", {}).get("pergunta_file", "pergunta.txt")
 RESPOSTA_FILE = BRIDGE_DIR / CONFIG.get("bridge", {}).get("resposta_file", "resposta.txt")
+ACAO_FILE = BRIDGE_DIR / CONFIG.get("bridge", {}).get("acao_file", "acao.json")
 
 # Garante a existência da pasta bridge
 BRIDGE_DIR.mkdir(parents=True, exist_ok=True)
