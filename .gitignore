@@ -1,0 +1,53 @@
+# Python Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Audio Files & Temporary Media
+*.mp3
+*.wav
+*.ogg
+*.flac
+ultima_fala*
+
+# Heavy Binary Models (Kokoro / ONNX weights)
+*.bin
+*.onnx
+
+# Inter-Process Communication (Bridge Runtime Files)
+bridge/*.txt
+bridge/
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.*
+*.pem
+*.key
+*.secret
+
+# IDEs & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS System Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Build & Packaging
+build/
+dist/
+*.egg-info/

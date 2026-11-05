@@ -1,0 +1,43 @@
+{
+  "hotkey": "shift+'",
+  "debounce_seconds": 0.35,
+  "audio": {
+    "sample_rate": 16000,
+    "channels": 1,
+    "language": "pt-BR"
+  },
+  "beeps": {
+    "start_freq": 1200,
+    "stop_freq": 850,
+    "sent_freq": 1400,
+    "error_freq": 450
+  },
+  "tts": {
+    "default_voice": "cristina",
+    "presets": {
+      "cristina": {
+        "voice": "pt-BR-ThalitaMultilingualNeural",
+        "pitch": "+8Hz",
+        "rate": "+5%",
+        "description": "Feminino jovem, dinâmico e expressivo (calibrado)"
+      },
+      "antonio": {
+        "voice": "pt-BR-AntonioNeural",
+        "pitch": "-8Hz",
+        "rate": "-5%",
+        "description": "Masculino encorpado, calmo e companheiro de trabalho (calibrado)"
+      },
+      "francisca": {
+        "voice": "pt-BR-FranciscaNeural",
+        "pitch": "+0Hz",
+        "rate": "+0%",
+        "description": "Feminino neutro, dicção formal clássica"
+      }
+    }
+  },
+  "bridge": {
+    "folder": "bridge",
+    "pergunta_file": "pergunta.txt",
+    "resposta_file": "resposta.txt"
+  }
+}

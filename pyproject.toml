@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "voxgravity"
+version = "1.0.0"
+description = "Zero-latency push-to-toggle voice companion and file-bridge IPC for AI agents."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Felipe Lessa", email = "lessatubexd@gmail.com" }
+]
+keywords = [
+    "voice-assistant",
+    "speech-to-text",
+    "text-to-speech",
+    "antigravity",
+    "push-to-talk",
+    "edge-tts",
+    "mcp"
+]
+dependencies = [
+    "sounddevice>=0.5.0",
+    "soundfile>=0.12.0",
+    "numpy>=1.24.0",
+    "SpeechRecognition>=3.10.0",
+    "edge-tts>=7.0.0",
+    "keyboard>=0.13.5",
+    "pyperclip>=1.8.0",
+    "mcp>=1.0.0"
+]
+
+[project.scripts]
+voxgravity = "voxgravity.cli:main"
+voxgravity-bar = "voxgravity.ui:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
